@@ -1,16 +1,12 @@
 ﻿@{
     var db = Database.Open(App.db);
-
+    Layout = "~/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-        
-    </body>
-</html>
+@section Footer{
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
+}

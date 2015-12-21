@@ -1,0 +1,25 @@
+﻿@{
+    var db = Database.Open(App.db);
+    Layout = "~/_Layout.cshtml";
+    var sql = "";
+
+    if(UrlData[0] == "Abilities"){
+        sql = "SELECT * FROM Abilities";
+        var abilities = db.Query(sql);
+        var grid = new WebGrid(abilities);
+        @grid.GetHtml("table")
+    } else
+    if(UrlData[0] == "Items"){
+        sql = "SELECT * FROM items";
+        var items = db.Query(sql);
+        var grid = new WebGrid(items); 
+        @grid.GetHtml(
+            tableStyle: "table",
+            columns: grid.Columns(
+                grid.Column("ItemName", "Item Name"),
+                grid.Column("ItemDescription", "Notes"),
+                grid.Column("ItemType", "Category"),
+                grid.Column("ItemValue", "Value"),
+                grid.Column("ItemLevel", "Level")))
+    }
+}
